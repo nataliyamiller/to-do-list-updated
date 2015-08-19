@@ -1,17 +1,42 @@
+import java.util.ArrayList;
+
 public class Task{
+  private static ArrayList<Task> instances = new ArrayList<Task>();
 
-  private String mDescription; //A variable in each Task object which holds description
+  private String mDescription;
+  private boolean mCompleted;
+  private int mId;
 
-  //Task initiator: Specifies that a Task object is created with:
-  //Task taskName = new Task("String goes in parameters")
+
   public Task(String description){
-    mDescription = description; //Assign mDescription for this task at Task initialization
+    mDescription = description;
+    mCompleted = false;
+    instances.add(this);
+    mId = instances.size();
   }
 
   public String getDescription() {
     return mDescription;
   }
 
+  public boolean isCompleted() {
+    return mCompleted;
+  }
 
+  public int getId() {
+    return mId;
+  }
+
+  public static ArrayList<Task> all() {
+    return instances;
+  }
+
+  public static Task find(int id) {
+    try {
+      return instances.get(id-1);
+    } catch (IndexOutOfBoundsException e) {
+      return null;
+    }
+  }
 
 }
