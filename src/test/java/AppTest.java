@@ -28,7 +28,7 @@ public class AppTest extends FluentTest {
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("Task list!");
+    assertThat(pageSource()).contains("Todo list!");
   }
 
   @Test
@@ -54,7 +54,7 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/tasks/new");
     fill("#description").with("Mow the lawn");
     submit(".btn");
-    goTo("http://localhost:4567/taks/new");
+    goTo("http://localhost:4567/tasks/new");
     fill("#description").with("Buy groceries");
     submit(".btn");
     click("a", withText("View all tasks"));
