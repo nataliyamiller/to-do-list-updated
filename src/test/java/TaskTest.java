@@ -3,6 +3,9 @@ import static org.junit.Assert.*;
 
 public class TaskTest {
 
+  @Rule
+  public ClearRule clearRule = new ClearRule();
+
   @Test //Test that we can initiate a Task object
   public void Task_instantiatesCorrectly_true() {
     Task myTask = new Task("Mow the lawn");
@@ -45,5 +48,12 @@ public class TaskTest {
   @Test
   public void find_returnsNullWhenNoTaskFound_null() {
     assertTrue(Task.find(999) == null);
+  }
+
+  @Test
+  public void clear_emptiesAllTasksFromArrayList() {
+    Task myTask = new Task("Mow the lawn");
+    Task.clear();
+    assertEquals(Task.all().size(), 0);
   }
 }
